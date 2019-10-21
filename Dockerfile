@@ -37,7 +37,7 @@ ENV LANG=C.UTF-8
 RUN wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add -
 RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
 RUN apt-get update
-RUN apt-get install openssl libncurses5 libncurses5-dev libncursesw5-dev postgresql-client -y
+RUN apt-get install openssl libncurses5 libncurses5-dev libncursesw5-dev postgresql-client netcat -y
 RUN apt-get clean
 
 # Copy over the build artifact from the previous step and create a non root user
@@ -51,5 +51,3 @@ COPY entrypoint.sh .
 
 # Run the Phoenix app
 CMD ["./entrypoint.sh"]
-
-
